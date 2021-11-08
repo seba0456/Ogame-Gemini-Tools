@@ -72,7 +72,7 @@ def bot_expedition(empire, UNI=uniwersum):
 
         # jeśli są dostępne sloty
         if EXP_NUM < int(EXP_MAX):
-            print("[EXP] Dostępne Sloty ekspedycji.", EXP_NUM, " z ", EXP_MAX)
+            print("[EXP] Dostępne wolne sloty ekspedycji.", EXP_MAX - EXP_NUM, " z ", EXP_MAX)
 
             # sprawdzanie dostępności statków
             try:
