@@ -22,6 +22,6 @@ Bot wysyła wskazaną liczbę ekspedycji.
 6. Pobierz plik .py z tej strony
 7. Przenieś plik do C:/Users/TwojaNazwaUżytkownika
 ### Uruchamianie bota
-1.Uruchom CMD
-2.Wpisz python3 simplebot.py i naciśnij enter
-Bot został Pomyślnie uruchomiony!
+1. Uruchom CMD
+2. Wpisz python3 simplebot.py i naciśnij enter
+<br>Bot został Pomyślnie uruchomiony!
