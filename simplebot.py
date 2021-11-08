@@ -46,6 +46,7 @@ exp_pio = int(1) #Wpisz tutaj liczbę pionierów
 EXP_Reaper = int(1) #Wpisz tutaj liczbę rozprówaczy
 baza_ukl = [365, 366, 367] #Wpisz tutaj układy w, których chcesz operować
 EXP_SRC = id
+Min_deuter_to_start = int(20000) #Wpisz tutaj średnią liczbę zużycia deuteru na jedną ekspedycje.
 
 print("Floty zostaną wysyłane losowo w układy:", baza_ukl)
 print("Zaplanowanych", EXP_MAX, "ekspedycji.")
@@ -92,8 +93,8 @@ def bot_expedition(empire, UNI=uniwerka):
             try:
                 empire.resources(id)
                 res = empire.resources(id)
-                deuter_need = res.deuterium
-                if deuter_need >= 20000:
+                deuter_avaliable = res.deuterium
+                if deuter_avaliable >= Min_deuter_to_start:
                     empire.send_fleet(mission=mission.expedition,id=EXP_SRC,where=coordinates(dol_gala[0], random.choice(baza_ukl), 16),ships=EXP_SQUAD,resources=[0, 0, 0],speed=speed.max,holdingtime=1)
                     print(f"[EXP] Ekspedycja wysłana.",)
                 else:
@@ -106,7 +107,7 @@ def bot_expedition(empire, UNI=uniwerka):
                 continue
             expeditions = [fleet for fleet in empire.fleet() if fleet.mission == mission.expedition]
             EXP_NUM = len(expeditions)
-            if deuter_need < 20000:
+            if deuter_avaliable < Min_deuter_to_start:
                 print(f"[EXP] Proszę uzupełnić deuter! Ponawiam próbę wysłania floty.")
             elif EXP_NUM != EXP_MAX:
                 print(f"[EXP] Dostępne są sloty ekspedycji, wysyłam flotę...")
