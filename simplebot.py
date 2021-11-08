@@ -23,15 +23,15 @@ def sleep_until(target, delay=0):
 print("******************************")
 print("Witaj w Atopilot AE 1.4")
 print("******************************")
-log_in = ''
-haselko = ''
-uniwerka = 'Belinda'
+login = 'twoj@mail.com'
+haslo = 'hasło-masło'
+uniwersum = 'Belinda'
 
 
 # narzędzie logowania
-bot = OGame(uniwerka,log_in,haselko)
-print("Pomślnie zalogowano konto:", log_in)
-print("Wybrane Uniwersum:", uniwerka)
+bot = OGame(uniwersum,login,haslo)
+print("Pomślnie zalogowano konto:", login)
+print("Wybrane Uniwersum:", uniwersum)
 print("______________________________")
 
 # id obiektu
@@ -71,7 +71,7 @@ def bot_expedition(empire, UNI=uniwerka):
 
         # jeśli są dostępne sloty
         if EXP_NUM < int(EXP_MAX):
-            print("[EXP] Dostępne Sloty ekspedycji.")
+            print("[EXP] Dostępne Sloty ekspedycji.", EXP_NUM, " z ", EXP_MAX)
 
             # sprawdzanie dostępności statków
             try:
@@ -95,7 +95,7 @@ def bot_expedition(empire, UNI=uniwerka):
                 deuter_need = res.deuterium
                 if deuter_need >= 20000:
                     empire.send_fleet(mission=mission.expedition,id=EXP_SRC,where=coordinates(dol_gala[0], random.choice(baza_ukl), 16),ships=EXP_SQUAD,resources=[0, 0, 0],speed=speed.max,holdingtime=1)
-                    print(f"[EXP] Ekspedycja wysłana.", EXP_NUM, " z ", EXP_MAX)
+                    print(f"[EXP] Ekspedycja wysłana.",)
                 else:
                     print(f"[EXP] Błąd, brak deuteru! Proszę uzupełnić deuter!")
 
@@ -104,9 +104,11 @@ def bot_expedition(empire, UNI=uniwerka):
                 empire.relogin(UNI)
                 time.sleep(random.randint(3,7))
                 continue
+            expeditions = [fleet for fleet in empire.fleet() if fleet.mission == mission.expedition]
+            EXP_NUM = len(expeditions)
             if deuter_need < 20000:
                 print(f"[EXP] Proszę uzupełnić deuter! Ponawiam próbę wysłania floty.")
-            else:
+            elif EXP_NUM != EXP_MAX:
                 print(f"[EXP] Dostępne są sloty ekspedycji, wysyłam flotę...")
             time.sleep(random.randint(3,7))
 
