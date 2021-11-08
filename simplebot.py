@@ -53,7 +53,7 @@ print("Zaplanowanych", EXP_MAX, "ekspedycji.")
 print("______________________________")
 
 # funkcja wysyłania ekspedycji
-def bot_expedition(empire, UNI=uniwerka):
+def bot_expedition(empire, UNI=uniwersum):
     print("[EXP] Proces wysyłania ekspedycji rozpoczęty.")
     while 1:
         expeditions = []
