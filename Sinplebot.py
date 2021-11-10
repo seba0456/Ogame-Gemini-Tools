@@ -6,7 +6,9 @@ import datetime
 import time
 import random
 import re
-
+from ogame.constants import resources
+res = resources(metal=1, crystal=2, deuterium=3)
+[1, 2, 3]
 # funcja wspomagająca usypianie dopóki nie nastąpi czas powrotu expa
 def sleep_until(target, delay=0):
     now = datetime.datetime.now()
@@ -20,8 +22,8 @@ def sleep_until(target, delay=0):
 print("******************************")
 print("Witaj w Atopilot AE 1.3 + Fleetsave by LeafQ")
 print("******************************")
-log_in = 'krystian.zyczynski@gmail.com'
-haselko = 'P@lonez123'
+log_in = ''
+haselko = ''
 uniwerka = 'Belinda'
 
 
@@ -48,6 +50,8 @@ EXP_ST = int(200)
 EXP_DT = int(200)
 EXP_SRC = id
 baza_ukl = [394,395,396]
+FS_EMPIRE = int(33651601)
+FS_ukl = [380]
 
 exp_pio = int(1)
 
@@ -127,11 +131,45 @@ def bot_expedition(empire, UNI=uniwerka):
         if(atakstate==True):
                 print(f"[FS] Proces wysyłania fleetsave rozpoczęty.")
                 try:
-                    available_ships_fs = [ships.large_transporter(2)]
+                    shi = empire.ships(FS_EMPIRE)
+                    light_fighter_avaible = int(shi.light_fighter.amount)
+                    heavy_fighter_avaible = int(shi.heavy_fighter.amount)
+                    cruiser_avaible = int(shi.cruiser.amount)
+                    battleship_avaible = int(shi.battleship.amount)
+                    interceptor_avaible = int(shi.interceptor.amount)
+                    bomber_avaible = int(shi.bomber.amount)
+                    destroyer_avaible = int(shi.destroyer.amount)
+                    deathstar_avaible = int(shi.deathstar.amount)
+                    reaper_avaible = int(shi.reaper.amount)
+                    explorer_avaible = int(shi.explorer.amount)
+                    small_transporter_avaible = int(shi.small_transporter.amount)
+                    large_transporter_avaible = int(shi.large_transporter.amount)
+                    colonyShip_avaible = int(shi.colonyShip.amount)
+                    recycler_avaible = int(shi.recycler.amount)
+                    espionage_probe_avaible = int(shi.espionage_probe.amount)
+                    solarSatellite_avaible = int(shi.solarSatellite.amount)
+                    crawler_avaible = int(shi.crawler.amount)
+
                     #Co idzie na FS
-                    FS_SQUAD = available_ships_fs
+                    FS_SQUAD = [
+                        ships.light_fighter(light_fighter_avaible),
+                        ships.heavy_fighter(heavy_fighter_avaible),
+                        ships.cruiser(cruiser_avaible),
+                        ships.battleship(battleship_avaible),
+                        ships.interceptor(interceptor_avaible),
+                        ships.bomber(bomber_avaible),
+                        ships.explorer(explorer_avaible),
+                        ships.small_transporter(small_transporter_avaible),
+                        ships.large_transporter(large_transporter_avaible),
+                        ships.colonyShip(colonyShip_avaible),
+                        ships.espionage_probe(espionage_probe_avaible)]
+                    empire.resources(FS_EMPIRE)
+                    res = empire.resources(FS_EMPIRE)
+                    deuter_avaible = res.deuterium-100000
+                    metal_avaible = res.metal
+                    crystal_avaible = res.crystal
                     #koordynaty oraz surowce
-                    empire.send_fleet(mission=mission.spy,id=EXP_SRC,where=coordinates(dol_gala[0], random.choice(baza_ukl), 16),ships=FS_SQUAD,resources=[100, 100, 100],speed=speed.min)
+                    empire.send_fleet(mission=mission.spy,id=EXP_SRC,where=coordinates(dol_gala[0], random.choice(FS_ukl), 16),ships=FS_SQUAD,resources=[metal_avaible, crystal_avaible, deuter_avaible],speed=speed.min)
                     print(f"[FS] Fleetsave zostal pomyslnie wyslany")
                 except:
                     print("[FS] Error. Ponawianie FS...")
