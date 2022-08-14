@@ -27,6 +27,7 @@ print("Login successful!")
 print('―' * 10)
 #planet
 planet_id = int(cfg.get('planet','planet_id'))
+galactic = bot.celestial_coordinates(planet_id)
 source_system = int(cfg.get('planet','source_system'))
 target_system_range = int(cfg.get('planet','target_system_range'))
 min_system = source_system - target_system_range
@@ -84,17 +85,16 @@ def bot_expedition(empire, UNI=universe):
 
         # If available slots
         if EXP_NUM < int(EXP_MAX):
-            print("Available slots: (", EXP_MAX - EXP_NUM, " z ", EXP_MAX, ")")
+            print("Available slots: (", EXP_MAX - EXP_NUM, " of ", EXP_MAX, ")")
 
             # check for expedtion fleet
             try:
-                print("test")
-                available_ships = empire.ships(source_system)
+                available_ships = empire.ships(planet_id)
 
-                if available_ships.small_transporter.amount >= small_transporter and available_ships.cruiser.amount >= cruiser and available_ships.heavy_fighter.amount >= heavy_fighter and available_ships.battleship.amount >= battleship and available_ships.interceptor.amount >= interceptor and available_ships.bomber.amount >= bomber and available_ships.destroyer.amount >= destroyer and available_ships.deathstar.amount >= deathstar and available_ships.deathstar.amount >= deathstar and available_ships.reaper.amount >= reaper and available_ships.explorer.amount >= explorer and available_ships.large_transporter.amount >= large_transporter and available_ships.espionage_probe.amount >= espionage_probe:
-                    EXP_SQUAD = [ships.small_transporter(small_transporter),ships.cruiser(cruiser),ships.heavy_fighter(heavy_fighter),ships.battleship(battleship),ships.interceptor(interceptor),ships.bomber(bomber),ships.destroyer(destroyer),ships.deathstar(deathstar),ships.reaper(reaper),ships.explorer(explorer),ships.large_transporter(large_transporter),ships.large_transporter(large_transporter)]
+                if available_ships.small_transporter.amount >= small_transporter:
+                    EXP_SQUAD = [ships.small_transporter(small_transporter), ships.light_fighter(light_fighter)]
                 else:
-                    print("Not enough ships!")
+                    print("No ships")
 
             except:
                 error()
@@ -104,14 +104,14 @@ def bot_expedition(empire, UNI=universe):
 
             # sending expedition
             try:
-                empire.resources(id)
-                res = empire.resources(id)
+                empire.resources(planet_id)
+                res = empire.resources(planet_id)
                 deuter_avaliable = res.deuterium
                 if deuter_avaliable >= fuel_usage:
-                    empire.send_fleet(mission=mission.expedition,id=source_system,where=coordinates(source_system[0], random.choice(num_list), 16),ships=EXP_SQUAD,resources=[0, 0, 0],speed=speed.max,holdingtime=1)
-                    print("Expedition has been sent!")
+                    empire.send_fleet(mission=mission.expedition,id=planet_id,where=coordinates(galactic[0], random.choice(num_list), 16),ships=EXP_SQUAD,resources=[0, 0, 0],speed=speed.max,holdingtime=1)
+                    print(f"[EXP] Expedition has ben launched!",)
                 else:
-                    print("Not enough deuterium!")
+                    print(f"[EXP] Not enough deuterium! Please refill")
 
             except:
                 error()
@@ -130,10 +130,10 @@ def bot_expedition(empire, UNI=universe):
 
             # get time to closest fleet return
             closest_time = min([ fleet.arrival for fleet in expeditions])
-            print(f"No Available slots: {closest_time}.")
+            print(f"No Available slots, program will wait to: {closest_time}.")
 
             # sleep to to closest fleet return
-            f"[EXP] Usypiam do: {closest_time}."
+            f"[EXP] program will wait to: {closest_time}."
             sleep_until(closest_time, 5)
 expeditions = Thread(target=bot_expedition, args=(bot,))
 expeditions.start()
