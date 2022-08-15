@@ -37,13 +37,8 @@ num_list = list(num_range)
 print("Source planet is: ", source_system,".")
 print("Expeditions will be sent in systems: ",num_list,".")
 #fleet
-heavy_fighter=int(cfg.get('fleet','LM'))
 cruiser=int(cfg.get('fleet','KR'))
 battleship=int(cfg.get('fleet','OW'))
-interceptor=int(cfg.get('fleet','PA'))
-bomber=int(cfg.get('fleet','BO'))
-destroyer=int(cfg.get('fleet','NI'))
-deathstar=int(cfg.get('fleet','GS'))
 reaper=int(cfg.get('fleet','RO'))
 explorer=int(cfg.get('fleet','PI'))
 small_transporter=int(cfg.get('fleet','MT'))
@@ -92,7 +87,7 @@ def bot_expedition(empire, UNI=universe):
                 available_ships = empire.ships(planet_id)
 
                 if available_ships.small_transporter.amount >= small_transporter:
-                    EXP_SQUAD = [ships.small_transporter(small_transporter), ships.light_fighter(light_fighter)]
+                    EXP_SQUAD = [ships.small_transporter(small_transporter), ships.light_fighter(light_fighter), ships.espionage_probe(espionage_probe)]
                 else:
                     print("No ships")
 
