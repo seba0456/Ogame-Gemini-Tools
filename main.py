@@ -1,16 +1,12 @@
 from configparser import ConfigParser
 from ogame import OGame
 from ogame.constants import destination, coordinates, ships, mission, speed, buildings, status, fleet, resources
-from bs4 import BeautifulSoup
 from threading import Thread, Event
 import datetime
 import time
 import random
-import re
 from ogame.constants import resources
 from inspect import currentframe, getframeinfo
-res = resources(metal=1, crystal=2, deuterium=3)
-[1, 2, 3]
 cfg = ConfigParser()
 cfg.read('config.ini')
 #login
@@ -48,6 +44,8 @@ espionage_probe=int(cfg.get('fleet','EP'))
 light_fighter=int(cfg.get('fleet','LM'))
 EXP_MAX=int(cfg.get('fleet','EXP_MAX'))
 print("Expeditions will be sent ",EXP_MAX, "times.")
+#settings
+bot_continue_anyway=int(cfg.get('settings','continue_anyway'))
 #functions
 #get line
 def get_linenumber():
@@ -65,7 +63,7 @@ def sleep_until(target, delay=0):
     if delta > datetime.timedelta(0):
         time.sleep(delta.total_seconds() + delay)
         return True
-#sending expedtions
+#sending expedition
 def bot_expedition(empire, UNI=universe):
     print('―' * 10)
     print("Working, sending expeditions")
@@ -87,16 +85,22 @@ def bot_expedition(empire, UNI=universe):
         if EXP_NUM < int(EXP_MAX):
             print("Available slots: (", EXP_MAX - EXP_NUM, " of ", EXP_MAX, ")")
 
-            # check for expedtion fleet
+            # check for expedition fleet
             try:
                 available_ships = empire.ships(planet_id)
                 if available_ships.small_transporter.amount >= small_transporter:
                     EXP_SQUAD = [ships.small_transporter(small_transporter), ships.light_fighter(light_fighter), ships.espionage_probe(espionage_probe), ships.cruiser(cruiser), ships.battleship(battleship), ships.reaper(reaper), ships.explorer(explorer)]
                 else:
-                    print(available_ships.small_transporter.amount, "of", small_transporter)
-                    print("Not enougch transporter ships! Program will wait 60-120 seconds.")
-                    sleep_time=time.sleep(random.randint(60, 120))
-                    print("Waiting:",sleep_time)
+                    if bot_continue_anyway == 0:
+                        print(available_ships.small_transporter.amount, "of", small_transporter, "(", available_ships.small_transporter.amount-small_transporter, ")")
+                        print("Not enough transporter ships! Program will wait 60-120 seconds.")
+                        sleep_time=time.sleep(random.randint(60, 120))
+                        print("Waiting:",sleep_time)
+                    else:
+                        print("Not enough transporter ships! Program will continue anyway!")
+                        print(available_ships.small_transporter.amount, "of", small_transporter, "(", available_ships.small_transporter.amount-small_transporter, ")")
+                        EXP_SQUAD = [ships.small_transporter(small_transporter), ships.light_fighter(light_fighter),ships.espionage_probe(espionage_probe), ships.cruiser(cruiser),ships.battleship(battleship), ships.reaper(reaper), ships.explorer(explorer)]
+
 
 
             except:
@@ -110,7 +114,7 @@ def bot_expedition(empire, UNI=universe):
             try:
 
                 empire.send_fleet(mission=mission.expedition,id=planet_id,where=coordinates(galactic[0], random.choice(num_list), 16),ships=EXP_SQUAD,resources=[0, 0, 0],speed=speed.max,holdingtime=1)
-                print(f"[EXP] Expedition has ben launched!",)
+                print(f"Expedition has ben launched!",)
 
             except:
                 error()
@@ -130,8 +134,8 @@ def bot_expedition(empire, UNI=universe):
             closest_time = min([ fleet.arrival for fleet in expeditions])
             print(f"No Available slots, program will wait to: {closest_time}.")
             print('―' * 10)
-            # sleep to to closest fleet return
-            f"[EXP] program will wait to: {closest_time}."
+            # sleep to closest fleet return
+            f"[EXP] program will wait until: {closest_time}."
             sleep_until(closest_time, 5)
 expeditions = Thread(target=bot_expedition, args=(bot,))
 expeditions.start()
