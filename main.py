@@ -117,7 +117,7 @@ def bot_expedition(empire, UNI=universe):
 
             except:
                 error()
-
+                print("Error in line: ", get_linenumber())
                 empire.relogin(universe)
                 time.sleep(random.randint(3,7))
                 continue
