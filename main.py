@@ -88,21 +88,20 @@ def bot_expedition(empire, UNI=universe):
             # check for expedition fleet
             try:
                 available_ships = empire.ships(planet_id)
-                if available_ships.small_transporter.amount >= small_transporter:
-                    EXP_SQUAD = [ships.small_transporter(small_transporter), ships.light_fighter(light_fighter), ships.espionage_probe(espionage_probe), ships.cruiser(cruiser), ships.battleship(battleship), ships.reaper(reaper), ships.explorer(explorer)]
+                if available_ships.small_transporter.amount >= small_transporter and available_ships.large_transporter.amount >= large_transporter:
+                    EXP_SQUAD = [ships.small_transporter(small_transporter),ships.large_transporter(large_transporter), ships.light_fighter(light_fighter), ships.espionage_probe(espionage_probe), ships.cruiser(cruiser), ships.battleship(battleship), ships.reaper(reaper), ships.explorer(explorer)]
                 else:
                     if bot_continue_anyway == 0:
-                        print(available_ships.small_transporter.amount, "of", small_transporter, "(", available_ships.small_transporter.amount-small_transporter, ")")
+                        print("Small transporter", available_ships.small_transporter.amount, "of", small_transporter,"(", available_ships.small_transporter.amount - small_transporter, ")")
+                        print("Large transporter", available_ships.large_transporter.amount, "of",small_transporter, "(", available_ships.large_transporter.amount - large_transporter, ")")
                         print("Not enough transporter ships! Program will wait 60-120 seconds.")
                         sleep_time=time.sleep(random.randint(60, 120))
                         print("Waiting:",sleep_time)
                     else:
                         print("Not enough transporter ships! Program will continue anyway!")
-                        print(available_ships.small_transporter.amount, "of", small_transporter, "(", available_ships.small_transporter.amount-small_transporter, ")")
-                        EXP_SQUAD = [available_ships.small_transporter(small_transporter), available_ships.light_fighter(light_fighter),available_ships.espionage_probe(espionage_probe), available_ships.cruiser(cruiser),available_ships.battleship(battleship), available_ships.reaper(reaper), available_ships.explorer(explorer)]
-
-
-
+                        print("Small transporter",available_ships.small_transporter.amount, "of", small_transporter, "(",available_ships.small_transporter.amount - small_transporter, ")")
+                        print("Large transporter",available_ships.large_transporter.amount, "of", small_transporter, "(",available_ships.large_transporter.amount - large_transporter, ")")
+                        EXP_SQUAD = [ships.small_transporter(available_ships.small_transporter.amount),ships.large_transporter(available_ships.large_transporter.amount),ships.light_fighter(light_fighter),ships.espionage_probe(espionage_probe), ships.cruiser(cruiser), ships.battleship(battleship), ships.reaper(reaper), ships.explorer(explorer)]
             except:
                 error()
                 print("Error in line: ", get_linenumber())
