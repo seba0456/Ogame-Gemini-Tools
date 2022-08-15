@@ -5,6 +5,8 @@ from threading import Thread, Event
 import datetime
 import time
 import random
+from time import sleep
+from tqdm import tqdm
 from ogame.constants import resources
 from inspect import currentframe, getframeinfo
 cfg = ConfigParser()
@@ -61,7 +63,9 @@ def sleep_until(target, delay=0):
     delta = target - now
 
     if delta > datetime.timedelta(0):
-        time.sleep(delta.total_seconds() + delay)
+        for i in tqdm(range (int(delta.total_seconds() + delay)), colour="WHITE"):
+            sleep(1)
+        print('―' * 10)
         return True
 #sending expedition
 def bot_expedition(empire, UNI=universe):
@@ -132,7 +136,7 @@ def bot_expedition(empire, UNI=universe):
             # get time to closest fleet return
             closest_time = min([ fleet.arrival for fleet in expeditions])
             print(f"No Available slots, program will wait to: {closest_time}.")
-            print('―' * 10)
+
             # sleep to closest fleet return
             f"[EXP] program will wait until: {closest_time}."
             sleep_until(closest_time, 5)
