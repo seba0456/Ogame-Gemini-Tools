@@ -8,17 +8,18 @@ import time
 import random
 import re
 from ogame.constants import resources
+from inspect import currentframe, getframeinfo
 res = resources(metal=1, crystal=2, deuterium=3)
 [1, 2, 3]
 cfg = ConfigParser()
 cfg.read('config.ini')
 #login
 login = str(cfg.get('login','login'))
-print(login)
+print("Login:",login)
 password = str(cfg.get('login','password'))
-print(password)
+print("Password:",'*' * len(password))
 universe = str(cfg.get('login','universe'))
-print(universe)
+print("Universe:",universe)
 #login to Ogame
 print("Bot is starting...")
 print('―' * 10)
@@ -45,13 +46,17 @@ small_transporter=int(cfg.get('fleet','MT'))
 large_transporter=int(cfg.get('fleet','DT'))
 espionage_probe=int(cfg.get('fleet','EP'))
 light_fighter=int(cfg.get('fleet','LM'))
-fuel_usage=int(cfg.get('fleet','required_deuter'))
 EXP_MAX=int(cfg.get('fleet','EXP_MAX'))
 print("Expeditions will be sent ",EXP_MAX, "times.")
 #functions
+#get line
+def get_linenumber():
+    cf = currentframe()
+    return cf.f_back.f_lineno
 #print error
 def error():
     print("Error, Bot will try to login again")
+
 #sleep function
 def sleep_until(target, delay=0):
     now = datetime.datetime.now()
@@ -85,39 +90,37 @@ def bot_expedition(empire, UNI=universe):
             # check for expedtion fleet
             try:
                 available_ships = empire.ships(planet_id)
-
                 if available_ships.small_transporter.amount >= small_transporter:
-                    EXP_SQUAD = [ships.small_transporter(small_transporter), ships.light_fighter(light_fighter), ships.espionage_probe(espionage_probe)]
+                    EXP_SQUAD = [ships.small_transporter(small_transporter), ships.light_fighter(light_fighter), ships.espionage_probe(espionage_probe), ships.cruiser(cruiser), ships.battleship(battleship), ships.reaper(reaper), ships.explorer(explorer)]
                 else:
-                    print("No ships")
+                    print(available_ships.small_transporter.amount, "of", small_transporter)
+                    print("Not enougch transporter ships! Program will wait 60-120 seconds.")
+                    sleep_time=time.sleep(random.randint(60, 120))
+                    print("Waiting:",sleep_time)
+
 
             except:
                 error()
+                print("Error in line: ", get_linenumber())
                 empire.relogin(universe)
                 time.sleep(random.randint(3,7))
                 continue
 
             # sending expedition
             try:
-                empire.resources(planet_id)
-                res = empire.resources(planet_id)
-                deuter_avaliable = res.deuterium
-                if deuter_avaliable >= fuel_usage:
-                    empire.send_fleet(mission=mission.expedition,id=planet_id,where=coordinates(galactic[0], random.choice(num_list), 16),ships=EXP_SQUAD,resources=[0, 0, 0],speed=speed.max,holdingtime=1)
-                    print(f"[EXP] Expedition has ben launched!",)
-                else:
-                    print(f"[EXP] Not enough deuterium! Please refill")
+
+                empire.send_fleet(mission=mission.expedition,id=planet_id,where=coordinates(galactic[0], random.choice(num_list), 16),ships=EXP_SQUAD,resources=[0, 0, 0],speed=speed.max,holdingtime=1)
+                print(f"[EXP] Expedition has ben launched!",)
 
             except:
                 error()
+
                 empire.relogin(universe)
                 time.sleep(random.randint(3,7))
                 continue
             expeditions = [fleet for fleet in empire.fleet() if fleet.mission == mission.expedition]
             EXP_NUM = len(expeditions)
-            if deuter_avaliable < fuel_usage:
-                print(f"Not enough deuterium!")
-            elif EXP_NUM != EXP_MAX:
+            if EXP_NUM != EXP_MAX:
                 print(f"Available slots")
             time.sleep(random.randint(3,7))
 
