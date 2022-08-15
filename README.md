@@ -4,6 +4,9 @@ Bot wysyła wskazaną liczbę ekspedycji.
 <br>Bota konfigurujemy w pliku config.ini!
 <br>W liniach 2-4 wpisujemy dane logowania.
 <br>W lini 7 wpisujemy ID swojej planety/moona z której będziemy wysyłać ekspedycję.
+<br>W sekcji fleet wpisujemy liczbę statków, oznaczone są one w komentarzach .
+<br>W polu 8 wpisujemy nasz układ.
+<br>W polu 9 wpisujemy zasięg w, kótrych mamy zamiar operować zasięgo to: (nasz układ - target_system range) i  (nasz układ + target_system range).
 <br>Aby zdobyć ID musimy:
 1. Wejść do Ogame.
 1. Klinkąć na interesującą nas planetę.
@@ -11,9 +14,6 @@ Bot wysyła wskazaną liczbę ekspedycji.
 1. Wejść w pasek adresu storny.     
 > Przykładowo https://s180-pl.ogame.gameforge.com/game/index.php?page=ingame&component=overview&cp=33640732
 5. ID znajduje się po cp=, w tym przypadku to 33640732.
-<br>W sekcji fleet wpisujemy liczbę statków, oznaczone są one w komentarzach .
-<br>W polu 8 wpisujemy nasz układ.
-<br>W polu 9 wpisujemy zasięg w, kótrych mamy zamiar operować zasięgo to: (nasz układ - target_system range) i  (nasz układ + target_system range).
 ## Instalacja oraz przygotowywanie systemu do używania bota w systemie Windows 10 lub nowszym
 1. Uruchom Microsoft Store oraz wyszukaj frazę: Python 3.9, którego wydawcą jest Python Software Foundation 
 2. Zainstaluj program Python 3.9
