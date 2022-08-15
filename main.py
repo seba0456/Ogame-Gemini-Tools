@@ -126,7 +126,7 @@ def bot_expedition(empire, UNI=universe):
             # get time to closest fleet return
             closest_time = min([ fleet.arrival for fleet in expeditions])
             print(f"No Available slots, program will wait to: {closest_time}.")
-
+            print('―' * 10)
             # sleep to to closest fleet return
             f"[EXP] program will wait to: {closest_time}."
             sleep_until(closest_time, 5)
