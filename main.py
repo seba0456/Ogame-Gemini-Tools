@@ -48,6 +48,7 @@ EXP_MAX=int(cfg.get('fleet','EXP_MAX'))
 print("Expeditions will be sent ",EXP_MAX, "times.")
 #settings
 bot_continue_anyway=int(cfg.get('settings','continue_anyway'))
+progress_bar_enable=int(cfg.get('settings','enable_progress_bar'))
 #functions
 #get line
 def get_linenumber():
@@ -63,10 +64,14 @@ def sleep_until(target, delay=0):
     delta = target - now
 
     if delta > datetime.timedelta(0):
-        for i in tqdm(range (int(delta.total_seconds() + delay)), colour="WHITE"):
-            sleep(1)
-        print('―' * 10)
-        return True
+            if progress_bar_enable == 1:
+                for i in tqdm(range (int(delta.total_seconds() + delay)), colour="WHITE"):
+                    sleep(1)
+            else:
+                time.sleep(delta.total_seconds() + delay)
+    print('―' * 10)
+    time.sleep(random.randint(2,5))
+    return True
 #sending expedition
 def bot_expedition(empire, UNI=universe):
     print('―' * 10)
@@ -80,7 +85,7 @@ def bot_expedition(empire, UNI=universe):
             time.sleep(2)
 
         except:
-            print("Error, No available slots...")
+            print("Error, something went wrong")
             empire.relogin(universe)
             time.sleep(random.randint(3,7))
             continue
@@ -135,8 +140,8 @@ def bot_expedition(empire, UNI=universe):
 
             # get time to closest fleet return
             closest_time = min([ fleet.arrival for fleet in expeditions])
-            print(f"No Available slots, program will wait to: {closest_time}.")
-
+            print(f"No Available slots, program will wait until: {closest_time}.")
+            time.sleep(random.randint(1, 3))
             # sleep to closest fleet return
             f"[EXP] program will wait until: {closest_time}."
             sleep_until(closest_time, 5)
