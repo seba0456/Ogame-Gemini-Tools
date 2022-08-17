@@ -32,8 +32,10 @@ Bot wysyła wskazaną liczbę ekspedycji.
 ##### Przygotowywywanie bota do pracy.
 1. Zmodyfikuj plik config.ini (instrukcja powyżej)
 2. Uruchom terminal w wypakowanym folderze
-3. Uruchom w terminalu > ./InstallDependences.sh
+3. Uruchom w terminalu 
+> ./InstallDependences.sh
 4. Bot zostanie aktywowany po tym automatycznie
 ##### Uruchamianie 
 1. Uruchom terminal w wypakowanym folderze
-2. Uruchom w terminalu > ./Gemini.sh
+2. Uruchom w terminalu 
+ >./Gemini.sh
