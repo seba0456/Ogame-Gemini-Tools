@@ -25,3 +25,15 @@ Bot wysyła wskazaną liczbę ekspedycji.
 1. Uruchom CMD
 2. Wpisz python3 simplebot.py i naciśnij enter
 <br>Bot został Pomyślnie uruchomiony!
+#### Instalacja w systemie Linux 
+1. Pobierz bota jako release
+2. Odpakuj archiwum 
+3. Uruchom terminal w wypakowanym folderze
+##### Przygotowywywanie bota do pracy.
+1. Zmodyfikuj plik config.ini (instrukcja powyżej)
+2. Uruchom terminal w wypakowanym folderze
+3. Uruchom w terminalu > ./InstallDependences.sh
+4. Bot zostanie aktywowany po tym automatycznie
+##### Uruchamianie 
+1. Uruchom terminal w wypakowanym folderze
+2. Uruchom w terminalu > ./Gemini.sh
