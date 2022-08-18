@@ -2,7 +2,7 @@ import json
 # Opening JSON file
 file = input("Enter .json name:")
 target = input("Enter player name that you are looking for:")
-with open('test.json', 'r') as f:
+with open(file, 'r') as f:
     distros_dict = json.load(f)
 x=[]
 run_once = 1
@@ -29,7 +29,4 @@ for x in distros_dict:
         if str(x["does_moon_exist"]) == "True":
             print("Planet has moon.")
         print('―' * 10)
-if planets !=0:
-    print("Player has:", str(planets)+" planets.")
-else:
-    print("Player not found!")
+print("Player has:", str(planets)+".")
