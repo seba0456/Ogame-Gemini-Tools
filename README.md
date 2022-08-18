@@ -1,4 +1,4 @@
-#Aktualizacja
+# Aktualizacja
 Od teraz domyślnym branchem jest gemini. Jedynym wspieranym (przezemnie branchem jest gemini).
 ## Ogame-Expedition Bot koniguracja bota
 Własna modyfikacja już istniejącego kodu.
