@@ -9,4 +9,6 @@ Program zada pytanie o wybór trybu działania. Wybierając "Yes" odpalisz tryb 
 Jeśli wybrałeś "No" program odpali się w trybie odczytywania danych z pliku.
 Program spyta się nas o nazę pliku. Wygłada ona tak
 >nazwapliku.json
+
+Plik musi być w tym samym folderze co plik .py!!!
 Następnie wpisujemy nazwę gracza.
