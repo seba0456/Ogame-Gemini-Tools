@@ -30,6 +30,6 @@ for x in distros_dict:
             print("Planet has moon.")
         print('―' * 10)
 if planets !=0:
-    print("Player has:", str(planets)+".")
+    print("Player has:", str(planets)+" planets.")
 else:
     print("Player not found!")
