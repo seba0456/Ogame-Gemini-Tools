@@ -7,3 +7,4 @@ Program zada pytanie o wybór trybu działania. Wybierając "Yes" odpalisz tryb 
 Jeśli wybrałeś "No" program odpali się w trybie odczytywania danych z pliku.
 Program spyta się nas o nazę pliku. Wygłada ona tak
 >nazwapliku.json
+Następnie wpisujemy nazwę gracza.
