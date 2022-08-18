@@ -44,6 +44,7 @@ small_transporter=int(cfg.get('fleet','MT'))
 large_transporter=int(cfg.get('fleet','DT'))
 espionage_probe=int(cfg.get('fleet','EP'))
 light_fighter=int(cfg.get('fleet','LM'))
+destroyer=int(cfg.get('fleet','NI'))
 EXP_MAX=int(cfg.get('fleet','EXP_MAX'))
 print("Expeditions will be sent ",EXP_MAX, "times.")
 #settings
@@ -98,7 +99,7 @@ def bot_expedition(empire, UNI=universe):
             try:
                 available_ships = empire.ships(planet_id)
                 if available_ships.small_transporter.amount >= small_transporter and available_ships.large_transporter.amount >= large_transporter:
-                    EXP_SQUAD = [ships.small_transporter(small_transporter),ships.large_transporter(large_transporter), ships.light_fighter(light_fighter), ships.espionage_probe(espionage_probe), ships.cruiser(cruiser), ships.battleship(battleship), ships.reaper(reaper), ships.explorer(explorer)]
+                    EXP_SQUAD = [ships.small_transporter(small_transporter),ships.large_transporter(large_transporter), ships.light_fighter(light_fighter), ships.espionage_probe(espionage_probe), ships.cruiser(cruiser), ships.battleship(battleship), ships.reaper(reaper), ships.explorer(explorer),ships.destroyer(destroyer)]
                 else:
                     if bot_continue_anyway == 0:
                         print("Small transporter", available_ships.small_transporter.amount, "of", small_transporter,"(", available_ships.small_transporter.amount - small_transporter, ")")
@@ -110,14 +111,14 @@ def bot_expedition(empire, UNI=universe):
                         print("Not enough transporter ships! Program will continue anyway!")
                         if available_ships.small_transporter.amount < small_transporter:
                             print("Warning! Not enough: Small transporter",available_ships.small_transporter.amount, "of", small_transporter, "(",available_ships.small_transporter.amount - small_transporter, ")")
-                            EXP_SQUAD = [ships.small_transporter(available_ships.small_transporter.amount),ships.large_transporter(large_transporter),ships.light_fighter(light_fighter), ships.espionage_probe(espionage_probe),ships.cruiser(cruiser), ships.battleship(battleship), ships.reaper(reaper),ships.explorer(explorer)]
+                            EXP_SQUAD = [ships.small_transporter(available_ships.small_transporter.amount),ships.large_transporter(large_transporter),ships.light_fighter(light_fighter), ships.espionage_probe(espionage_probe),ships.cruiser(cruiser), ships.battleship(battleship), ships.reaper(reaper),ships.explorer(explorer), ships.destroyer(destroyer)]
                         elif available_ships.large_transporter.amount < large_transporter:
                             print("Warning! Not enough: Large transporter",available_ships.large_transporter.amount, "of", large_transporter, "(",available_ships.large_transporter.amount - large_transporter, ")")
                             EXP_SQUAD = [ships.small_transporter(small_transporter),ships.large_transporter(available_ships.large_transporter.amount),ships.light_fighter(light_fighter),ships.espionage_probe(espionage_probe), ships.cruiser(cruiser), ships.battleship(battleship), ships.reaper(reaper), ships.explorer(explorer)]
                         elif available_ships.small_transporter.amount < small_transporter and available_ships.large_transporter.amount < large_transporter:
                             print("Warning! Not enough: Small transporter",available_ships.small_transporter.amount, "of", small_transporter, "(",available_ships.small_transporter.amount - small_transporter, ")")
                             print("Warning! Not enough: Large transporter",available_ships.large_transporter.amount, "of", large_transporter, "(",available_ships.large_transporter.amount - large_transporter, ")")
-                            EXP_SQUAD = [ships.small_transporter(available_ships.small_transporter.amount),ships.large_transporter(available_ships.large_transporter.amount),ships.light_fighter(light_fighter), ships.espionage_probe(espionage_probe),ships.cruiser(cruiser), ships.battleship(battleship), ships.reaper(reaper),ships.explorer(explorer)]
+                            EXP_SQUAD = [ships.small_transporter(available_ships.small_transporter.amount),ships.large_transporter(available_ships.large_transporter.amount),ships.light_fighter(light_fighter), ships.espionage_probe(espionage_probe),ships.cruiser(cruiser), ships.battleship(battleship), ships.reaper(reaper),ships.explorer(explorer),ships.destroyer(destroyer)]
                         else:
                             print("Something unexpected happened:( Consider to check out your fleet.")
             except:
