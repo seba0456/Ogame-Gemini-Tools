@@ -1,4 +1,6 @@
-# Ogame-Expedition Bot koniguracja bota
+#Aktualizacja
+Od teraz domyślnym branchem jest gemini. Jedynym wspieranym (przezemnie branchem jest gemini).
+## Ogame-Expedition Bot koniguracja bota
 Własna modyfikacja już istniejącego kodu.
 Bot wysyła wskazaną liczbę ekspedycji.
 <br>Bota konfigurujemy w pliku config.ini!
@@ -14,7 +16,7 @@ Bot wysyła wskazaną liczbę ekspedycji.
 1. Wejść w pasek adresu storny.     
 > Przykładowo https://s180-pl.ogame.gameforge.com/game/index.php?page=ingame&component=overview&cp=33640732
 5. ID znajduje się po cp=, w tym przypadku to 33640732.
-## Instalacja oraz przygotowywanie systemu do używania bota w systemie Windows 10 lub nowszym
+### Instalacja oraz przygotowywanie systemu do używania bota w systemie Windows 10 lub nowszym
 1. Uruchom Microsoft Store oraz wyszukaj frazę: Python 3.9, którego wydawcą jest Python Software Foundation 
 2. Zainstaluj program Python 3.9
 3. Uruchom CMD
@@ -25,7 +27,7 @@ Bot wysyła wskazaną liczbę ekspedycji.
 5. Wciśnij Enter i zaczekaj na ukończenie pobierania pakietu
 6. Pobierz plik .py z tej strony
 7. Przenieś plik do C:/Users/TwojaNazwaUżytkownika
-### Uruchamianie bota
+#### Uruchamianie bota
 1. Uruchom CMD
 2. Wpisz 
 > python3 simplebot.py i naciśnij enter
