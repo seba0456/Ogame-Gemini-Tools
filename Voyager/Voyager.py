@@ -53,10 +53,6 @@ for x in range(1,8):
             player_status=str(planet.status)
             does_moon_exist=planet.moon
             player_alliance=planet.alliance
-            if player_status=="['vacation']":
-                on_vacat = "true"
-            else:
-                on_vacat="false"
 
             with open(filename, mode='w') as f:
                 json.dump(lst, f)
@@ -64,7 +60,6 @@ for x in range(1,8):
                 lst.append({'player_name': player_name,
                             'player_rank':player_rank,
                             'player_alliance':player_alliance,
-                            'player_vacation':on_vacat,
                             'player_status': player_status,
                             'player_id': player_id,
                             'planet_name': planet_name,
