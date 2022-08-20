@@ -1,5 +1,9 @@
 # Co to Voyager
 Voyager to odłam bota Gemini zajmujący się skanowaniem galaktyki. Pełen skan galaktyki trwa około 30 minut. Wyniki skanu są zapisywane w pliku .json.
+Przed uruchomieniem bota zainstaluj PIL
+> python3 -m pip install --upgrade pip
+
+> python3 -m pip install --upgrade Pillow
 Bota aktywujemy komendą 
 > python Launch.py
 ## NIE UŻYWAJ GŁÓWNEGO KONTA
