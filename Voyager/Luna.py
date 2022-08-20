@@ -29,7 +29,4 @@ for x in distros_dict:
         if str(x["does_moon_exist"]) == "True":
             print("Planet has moon.")
         print('―' * 10)
-if planets !=0:
-    print("Player has:", str(planets)+" planets.")
-else:
-    print("Player not found!")
+print("Player has:", str(planets)+".")

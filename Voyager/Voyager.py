@@ -39,10 +39,11 @@ lst = []
 empire = OGame(UNI, USER, PASSWORD)
 
 print("Gathering data, please wait...")
+print("0 of 7")
 
 player_number=int(0)
 for x in range(1,8):
-    for y in range(1,499):
+    for y in tqdm(range(int(499)), colour="WHITE"):
         for planet in empire.galaxy(coordinates(x,y)):
             player_number=player_number+1
             player_name=str(planet.player)
@@ -67,13 +68,14 @@ for x in range(1,8):
                             'does_moon_exist':does_moon_exist,
                             })
                 json.dump(lst, f,indent=2)
-        print("Scanned: ", player_name)
+        #print("Scanned: ", player_name)
         sleep(0.25)
     print('―' * 10)
     print(x, "of 7")
+    print("Scanned: ", player_number, " players.")
     print('―' * 10)
 print('―' * 10)
 print('―' * 15)
-print("Scanned: ", player_number)
+print("Scanned: ", player_number, " players.")
 print('―' * 15)
 print('―' * 10)
