@@ -30,7 +30,7 @@ print("Universe:",UNI)
 ts = time.time()
 timestamp = ts
 date_time = datetime.fromtimestamp(timestamp)
-archive = str(UNI) + "_" + date_time.strftime("%m_%d_%Y_%H_%M") +".json"
+archive = str(UNI) + "_" + date_time.strftime("%d_%m_%Y_%H_%M") +".json"
 with open(archive, 'w') as f:
     print("The json file is created:", archive)
 filename = archive
@@ -43,7 +43,7 @@ print("0 of 7")
 
 player_number=int(0)
 for x in range(1,8):
-    for y in tqdm(range(int(499)), colour="WHITE"):
+    for y in tqdm(range(int(1),int(500)), colour="WHITE"):
         for planet in empire.galaxy(coordinates(x,y)):
             player_number=player_number+1
             player_name=str(planet.player)
@@ -79,3 +79,4 @@ print('―' * 15)
 print("Scanned: ", player_number, " players.")
 print('―' * 15)
 print('―' * 10)
+

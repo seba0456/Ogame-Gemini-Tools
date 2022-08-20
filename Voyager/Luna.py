@@ -1,9 +1,15 @@
 import json
 # Opening JSON file
-file = input("Enter .json name:")
+a = 1
+while a == 1:
+    file = input("Enter .json name:")
+    try:
+        with open(file, 'r') as f:
+            distros_dict = json.load(f)
+            a = 0
+    except:
+        print("Invalid file name, please try again...")
 target = input("Enter player name that you are looking for:")
-with open(file, 'r') as f:
-    distros_dict = json.load(f)
 x=[]
 run_once = 1
 for x in distros_dict:
@@ -29,4 +35,8 @@ for x in distros_dict:
         if str(x["does_moon_exist"]) == "True":
             print("Planet has moon.")
         print('―' * 10)
-print("Player has:", str(planets)+".")
+if planets > 0:
+    print("Player has:", str(planets)+".")
+else:
+    print("Player doesn't exist")
+

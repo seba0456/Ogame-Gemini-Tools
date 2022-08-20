@@ -1,4 +1,5 @@
-print("Type help for commands")
+print('―' * 80)
+print("Voyager is online, type help for commands")
 i=0
 while i == 0:
     mode=input()
