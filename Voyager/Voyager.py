@@ -20,7 +20,7 @@ from os import path
 
 cfg = ConfigParser()
 cfg.read('config.ini')
-
+gal_size = int(cfg.get('misc','gal_size'))+1
 USER = str(cfg.get('login','login'))
 print("Login:",USER)
 PASSWORD = str(cfg.get('login','password'))
@@ -39,39 +39,56 @@ lst = []
 empire = OGame(UNI, USER, PASSWORD)
 
 print("Gathering data, please wait...")
-print("0 of 7")
+print("0 of ", gal_size-1)
 
 player_number=int(0)
-for x in range(1,8):
+for x in range(1,gal_size):
     for y in tqdm(range(int(1),int(500)), colour="WHITE"):
-        for planet in empire.galaxy(coordinates(x,y)):
-            player_number=player_number+1
-            player_name=str(planet.player)
-            player_rank=planet.rank
-            planet_position=str(planet.position)
-            planet_name=planet.name
-            player_id=planet.player_id
-            player_status=str(planet.status)
-            does_moon_exist=planet.moon
-            player_alliance=planet.alliance
-
-            with open(filename, mode='w') as f:
-                json.dump(lst, f)
-            with open(filename, mode='w') as f:
-                lst.append({'player_name': player_name,
-                            'player_rank':player_rank,
-                            'player_alliance':player_alliance,
-                            'player_status': player_status,
-                            'player_id': player_id,
-                            'planet_name': planet_name,
-                            'planet_position':planet_position,
-                            'does_moon_exist':does_moon_exist,
-                            })
-                json.dump(lst, f,indent=2)
+        try:
+            for planet in empire.galaxy(coordinates(x,y)):
+                player_number=player_number+1
+                player_name=str(planet.player)
+                player_rank=planet.rank
+                planet_position=str(planet.position)
+                planet_name=planet.name
+                player_id=planet.player_id
+                player_status=str(planet.status)
+                does_moon_exist=planet.moon
+                player_alliance=planet.alliance
+                if player_rank is not None:
+                    with open(filename, mode='w') as f:
+                        json.dump(lst, f)
+                    with open(filename, mode='w') as f:
+                        lst.append({'player_name': player_name,
+                                    'player_rank':player_rank,
+                                    'player_alliance':player_alliance,
+                                    'player_status': player_status,
+                                    'player_id': player_id,
+                                    'planet_name': planet_name,
+                                    'planet_position':planet_position,
+                                    'does_moon_exist':does_moon_exist,
+                                    })
+                        json.dump(lst, f,indent=2)
+                else:
+                    with open(filename, mode='w') as f:
+                        json.dump(lst, f)
+                    with open(filename, mode='w') as f:
+                        lst.append({'player_name': 'Game Admin',
+                                    'player_rank':player_rank,
+                                    'player_alliance':player_alliance,
+                                    'player_status': player_status,
+                                    'player_id': player_id,
+                                    'planet_name': planet_name,
+                                    'planet_position':planet_position,
+                                    'does_moon_exist':does_moon_exist,
+                                    })
+                        json.dump(lst, f,indent=2)
         #print("Scanned: ", player_name)
+        except:
+            sleep(1)
         sleep(0.25)
     print('―' * 10)
-    print(x, "of 7")
+    print(x, "of ",gal_size-1)
     print("Scanned: ", player_number, " players.")
     print('―' * 10)
 print('―' * 10)
