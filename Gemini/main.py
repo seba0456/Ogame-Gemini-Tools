@@ -75,6 +75,18 @@ def sleep_until(target, delay=0):
     return True
 #sending expedition
 def bot_expedition(empire, UNI=universe):
+    cfg = ConfigParser()
+    cfg.read('config.ini')
+    cruiser=int(cfg.get('fleet','KR'))
+    battleship=int(cfg.get('fleet','OW'))
+    reaper=int(cfg.get('fleet','RO'))
+    explorer=int(cfg.get('fleet','PI'))
+    small_transporter=int(cfg.get('fleet','MT'))
+    large_transporter=int(cfg.get('fleet','DT'))
+    espionage_probe=int(cfg.get('fleet','EP'))
+    light_fighter=int(cfg.get('fleet','LM'))
+    destroyer=int(cfg.get('fleet','NI'))
+    EXP_MAX=int(cfg.get('fleet','EXP_MAX'))
     print('―' * 10)
     print("Working, sending expeditions")
     while 1:
