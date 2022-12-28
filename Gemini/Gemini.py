@@ -65,6 +65,7 @@ progress_bar_enable=int(cfg.get('settings','enable_progress_bar'))
 guard_mode=int(cfg.get('fleetsave','enable_fs'))
 refresh_rate=int(cfg.get('fleetsave','refresh_rate'))
 deuterium_to_leave=int(cfg.get('fleetsave','deuterium_to_leave'))
+is_attacked=0
 #functions
 #read ini
 class load_settings():
@@ -101,7 +102,7 @@ def sleep_until(target, delay=0):
     if guard_mode ==0:
         delta = target - now
     else:
-        delta = now + timedelta(minutes = 10)
+        delta = now + timedelta(minutes = refresh_rate)
 
     if delta > datetime.timedelta(0):
             if progress_bar_enable == 1:
@@ -203,10 +204,72 @@ def test():
     sleep(5)
     print("test")
 sleep(2)
+def fleet_save(empire, UNI=universe):
+    while 1:
+        atakstate = empire.attacked()
+        global is_attacked
+        is_attacked=int(atakstate)
+        if (atakstate == True):
+            print("Launching FleetSave, you are under attack!")
+            try:
+                shi = empire.ships(planet_id)
+                light_fighter_avaible = int(shi.light_fighter.amount)
+                heavy_fighter_avaible = int(shi.heavy_fighter.amount)
+                cruiser_avaible = int(shi.cruiser.amount)
+                battleship_avaible = int(shi.battleship.amount)
+                interceptor_avaible = int(shi.interceptor.amount)
+                bomber_avaible = int(shi.bomber.amount)
+                destroyer_avaible = int(shi.destroyer.amount)
+                deathstar_avaible = int(shi.deathstar.amount)
+                reaper_avaible = int(shi.reaper.amount)
+                explorer_avaible = int(shi.explorer.amount)
+                small_transporter_avaible = int(shi.small_transporter.amount)
+                large_transporter_avaible = int(shi.large_transporter.amount)
+                colonyShip_avaible = int(shi.colonyShip.amount)
+                recycler_avaible = int(shi.recycler.amount)
+                espionage_probe_avaible = int(shi.espionage_probe.amount)
+
+                FS_SQUAD = [
+                    ships.destroyer(destroyer_avaible),
+                    ships.deathstar(deathstar_avaible),
+                    ships.recycler(recycler_avaible),
+                    ships.light_fighter(light_fighter_avaible),
+                    ships.heavy_fighter(heavy_fighter_avaible),
+                    ships.cruiser(cruiser_avaible),
+                    ships.battleship(battleship_avaible),
+                    ships.interceptor(interceptor_avaible),
+                    ships.bomber(bomber_avaible),
+                    ships.explorer(explorer_avaible),
+                    ships.small_transporter(small_transporter_avaible),
+                    ships.large_transporter(large_transporter_avaible),
+                    ships.colonyShip(colonyShip_avaible),
+                    ships.espionage_probe(espionage_probe_avaible),
+                    ships.reaper(reaper_avaible)]
+                empire.resources(planet_id)
+                res = empire.resources(planet_id)
+                deuter_avaible = res.deuterium - 100000
+                metal_avaible = res.metal
+                crystal_avaible = res.crystal
+                # koordynaty oraz surowce
+                empire.send_fleet(mission=mission.spy, id=planet_id,
+                                where=coordinates(galactic[0], random.choice(source_system), 16), ships=FS_SQUAD,
+                              resources=[metal_avaible, crystal_avaible, deuter_avaible], speed=speed.min)
+                print(f"[FS] Fleetsave zostal pomyslnie wyslany")
+            except:
+                print("[FS] Error. Ponawianie FS...")
+                empire.relogin(UNI)
+                time.sleep(random.randint(3, 7))
+                continue
+        else:
+            print(f"[FS] Fleetsave nie jest potrzebny.")
+        break
 while 1:
 
     print("Starting expedition module...")
     #tutaj będzie funkcja od FS, więc wait_until wykonywane może być tylko po stronie ekspedycji
-    expeditions = Thread(target=expediton_pilot, args=(bot,))
-    expeditions.start()
+    if is_attacked == 0:
+        expeditions = Thread(target=expediton_pilot, args=(bot,))
+        expeditions.start()
+    else:
+        print("You are under attack!")
     test()
