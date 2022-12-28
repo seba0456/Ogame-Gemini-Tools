@@ -96,8 +96,8 @@ def bot_expedition(empire, UNI=universe):
             EXP_NUM = len(expeditions)
             time.sleep(2)
 
-        except:
-            print("Error, something went wrong")
+        except Exception as e:
+            print("Error, something went wrong:",e)
             empire.relogin(universe)
             time.sleep(random.randint(3,7))
             continue
@@ -134,9 +134,8 @@ def bot_expedition(empire, UNI=universe):
                             EXP_SQUAD = [ships.small_transporter(available_ships.small_transporter.amount),ships.large_transporter(available_ships.large_transporter.amount),ships.light_fighter(light_fighter), ships.espionage_probe(espionage_probe),ships.cruiser(cruiser), ships.battleship(battleship), ships.reaper(reaper),ships.explorer(explorer),ships.destroyer(destroyer)]
                         else:
                             print("Something unexpected happened:( Consider to check out your fleet.")
-            except:
-                error()
-                print("Error in line: ", get_linenumber())
+            except Exception as e:
+                print("Error, something went wrong:", e)
                 empire.relogin(universe)
                 time.sleep(random.randint(3,7))
                 continue
@@ -147,9 +146,9 @@ def bot_expedition(empire, UNI=universe):
                 empire.send_fleet(mission=mission.expedition,id=planet_id,where=coordinates(galactic[0], random.choice(num_list), 16),ships=EXP_SQUAD,resources=[0, 0, 0],speed=speed.max,holdingtime=1)
                 print(f"Expedition has ben launched!",)
 
-            except:
-                error()
-                print("Error in line: ", get_linenumber())
+
+            except Exception as e:
+                print("Error, something went wrong:", e)
                 empire.relogin(universe)
                 time.sleep(random.randint(3,7))
                 continue
