@@ -39,6 +39,8 @@ I to tyle żadnego przenoszenia plików z botem, nic tylko jeden plik do odpalen
 1. Uruchom terminal w folderze bota
 2. Zainstaluj wszystkie wymagane pliki za pomocą tej komendy:
 > ./InstallDependences.sh
+
 Bot powinien wystartować po tym automatycznie, jeśli chcesz odpalić tylko bota użyj:
 > ./Gemini.sh
+
 <br>Gotowe! Bot został Pomyślnie uruchomiony!
