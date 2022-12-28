@@ -46,7 +46,7 @@ espionage_probe=int(cfg.get('fleet','EP'))
 light_fighter=int(cfg.get('fleet','LM'))
 destroyer=int(cfg.get('fleet','NI'))
 EXP_MAX=int(cfg.get('fleet','EXP_MAX'))
-print("Expeditions will be sent ",EXP_MAX, "times.")
+print("Expeditions will be sent",EXP_MAX, "times.")
 #settings
 bot_continue_anyway=int(cfg.get('settings','continue_anyway'))
 progress_bar_enable=int(cfg.get('settings','enable_progress_bar'))
