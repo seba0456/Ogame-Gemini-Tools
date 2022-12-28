@@ -1,5 +1,5 @@
 # Ogame-Bot
-Własna modyfikacja już istniejącego kodu.
+Własna modyfikacja już istniejącego kodu. Bota można uruchomić na każdym urządzeniu z dostępem do internaetu i zainstalowanym językiem Python
 
 Bot gemini będzie mieć wiele modułów. Każdy z nich (wraz z instrukcjami znajduje się w folderze)
 1. Gemini zajmuje się wysyłaniem Ekspedycji.
