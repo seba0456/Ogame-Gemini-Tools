@@ -22,7 +22,7 @@ print("Universe:",universe)
 print("Bot is starting...")
 print('―' * 10)
 bot = OGame(universe,login,password)
-print("Login successful!")
+print("Login was successful!")
 print('―' * 10)
 #planet
 planet_id = int(cfg.get('planet','planet_id'))
@@ -33,8 +33,8 @@ min_system = source_system - target_system_range
 max_system = source_system + target_system_range + 1
 num_range = range(min_system,max_system)
 num_list = list(num_range)
-print("Source planet is: ", source_system,".")
-print("Expeditions will be sent in systems: ",num_list,".")
+print("The source planet is: ", source_system,".")
+print("Expeditions will be sent to systems: ",num_list,".")
 #fleet
 cruiser=int(cfg.get('fleet','KR'))
 battleship=int(cfg.get('fleet','OW'))
