@@ -51,14 +51,6 @@ print("Expeditions will be sent ",EXP_MAX, "times.")
 bot_continue_anyway=int(cfg.get('settings','continue_anyway'))
 progress_bar_enable=int(cfg.get('settings','enable_progress_bar'))
 #functions
-#get line
-def get_linenumber():
-    cf = currentframe()
-    return cf.f_back.f_lineno
-#print error
-def error():
-    print("Error, Bot will try to login again")
-
 #sleep function
 def sleep_until(target, delay=0):
     now = datetime.datetime.now()
