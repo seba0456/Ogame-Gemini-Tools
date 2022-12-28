@@ -196,8 +196,6 @@ def expediton_pilot(empire, UNI=universe):
             closest_time = min([ fleet.arrival for fleet in expeditions])
             print(f"No Available slots, program will wait until: {closest_time}.")
             time.sleep(random.randint(1, 3))
-            # sleep to closest fleet return
-            f"[EXP] program will wait until: {closest_time}."
             sleep_until(closest_time, 5)
         break
 def test():
@@ -265,9 +263,10 @@ def fleet_save(empire, UNI=universe):
         break
 while 1:
 
-    print("Starting expedition module...")
-    #tutaj będzie funkcja od FS, więc wait_until wykonywane może być tylko po stronie ekspedycji
+
+    fleet_save = Thread(target=fleet_save, args=(bot,))
     if is_attacked == 0:
+        print("Starting expedition module...")
         expeditions = Thread(target=expediton_pilot, args=(bot,))
         expeditions.start()
     else:
