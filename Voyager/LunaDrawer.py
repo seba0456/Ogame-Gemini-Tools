@@ -46,10 +46,19 @@ for gal in tqdm(range(1,gal_size)):
         os.makedirs(results_folder)
     file_path = os.path.join(results_folder, image_file_name)
     im.save(file_path)
-
-print("Done")
+print("Plase wait, program is generating universe map")
+amount_of_images = gal_size-1
+new_image = Image.new("RGB", (499, 16 * amount_of_images))
+for i in range(amount_of_images):
+    image = Image.open(f"Results/Image{i+1}.png")
+    width, height = image.size
+    new_image.paste(image, (0, i*height))
+new_image.save("Results/Universe.png")
+print("Done!")
 print("Painted: ", painted_plantes, "planets.")
 percent_galaxy=(painted_plantes / ((gal_size-1)*499*15)) * int (100)
 print("Plantes are: ",round(percent_galaxy, 2),"% of galaxy")
 percent_moons=(painted_moons/painted_plantes) * int(100)
 print(round(percent_moons, 2),"% planets has moons.")
+sleep(3)
+exec(open('Launch.py').read())

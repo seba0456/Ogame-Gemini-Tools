@@ -55,45 +55,30 @@ for x in range(1,gal_size):
                 player_status=str(planet.status)
                 does_moon_exist=planet.moon
                 player_alliance=planet.alliance
-                if player_rank is not None:
-                    with open(filename, mode='w') as f:
-                        json.dump(lst, f)
-                    with open(filename, mode='w') as f:
-                        lst.append({'player_name': player_name,
-                                    'player_rank':player_rank,
-                                    'player_alliance':player_alliance,
-                                    'player_status': player_status,
-                                    'player_id': player_id,
-                                    'planet_name': planet_name,
-                                    'planet_position':planet_position,
-                                    'does_moon_exist':does_moon_exist,
-                                    })
-                        json.dump(lst, f,indent=2)
-                else:
-                    with open(filename, mode='w') as f:
-                        json.dump(lst, f)
-                    with open(filename, mode='w') as f:
-                        lst.append({'player_name': 'Game Admin',
-                                    'player_rank':player_rank,
-                                    'player_alliance':player_alliance,
-                                    'player_status': player_status,
-                                    'player_id': player_id,
-                                    'planet_name': planet_name,
-                                    'planet_position':planet_position,
-                                    'does_moon_exist':does_moon_exist,
-                                    })
-                        json.dump(lst, f,indent=2)
+                with open(filename, mode='w') as f:
+                    json.dump(lst, f)
+                with open(filename, mode='w') as f:
+                    lst.append({'player_name': player_name,
+                                'player_rank':player_rank,
+                                'player_alliance':player_alliance,
+                                'player_status': player_status,
+                                'player_id': player_id,
+                                'planet_name': planet_name,
+                                'planet_position':planet_position,
+                                'does_moon_exist':does_moon_exist,
+                                })
+                    json.dump(lst, f,indent=2)
         #print("Scanned: ", player_name)
         except:
             sleep(1)
         sleep(0.25)
-    print('―' * 10)
+    print('_' * 10)
     print(x, "of ",gal_size-1)
     print("Scanned: ", player_number, " players.")
-    print('―' * 10)
-print('―' * 10)
-print('―' * 15)
+    print('_' * 10)
+print('_' * 10)
+print('_' * 15)
 print("Scanned: ", player_number, " players.")
-print('―' * 15)
-print('―' * 10)
+print('_' * 15)
+print('_' * 10)
 

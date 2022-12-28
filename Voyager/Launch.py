@@ -1,4 +1,4 @@
-print('―' * 80)
+print('_' * 80)
 print("Voyager is online, type help for commands")
 i=0
 while i == 0:
@@ -12,11 +12,11 @@ while i == 0:
     elif mode ==str("voyager abort"):
         i = 1
     elif mode ==("help"):
-        print('―' * 80)
+        print('_' * 80)
         print("voyager scout", "   ", "--- Scan universe and save it to file .JSON")
         print("voyager report", "  ", "--- Reads data from .JSON file and show details about player.")
         print("voyager draw", "    ", "--- Reads data from .JSON file and creates universe map")
         print("voyager abort", "   ", "--- Closes program")
-        print('―' * 80)
+        print('_' * 80)
     else:
         print("Unsupported")

@@ -22,7 +22,7 @@ for x in distros_dict:
                 if x["player_status"] =="['vacation']":
                     print("Player on vacation")
                 print("Planets: ")
-                print('―' * 30)
+                print('_' * 30)
                 run_once = 0
 planets=int(0)
 for x in distros_dict:
@@ -34,7 +34,7 @@ for x in distros_dict:
         print("Planet position: ", pos)
         if str(x["does_moon_exist"]) == "True":
             print("Planet has moon.")
-        print('―' * 10)
+        print('_' * 10)
 if planets > 0:
     print("Player has:", str(planets)+" plantes.")
 else:
