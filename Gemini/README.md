@@ -31,6 +31,14 @@ Bot wysyła wskazaną liczbę ekspedycji.
 1. Uruchom CMD
 2. Wpisz 
 > python3 simplebot.py i naciśnij enter
-##### Alternatywnie uruchamianie na windowsie
+#### Alternatywnie uruchamianie na windowsie
 1. Uruchom Launch.bat
-<br>Bot został Pomyślnie uruchomiony!
+I to tyle żadnego przenoszenia plików z botem, nic tylko jeden plik do odpalenia bota ^^
+
+### Instalacja oraz przygotowywanie systemu do używania bota w systemie Windows 10 lub nowszym
+1. Uruchom terminal w folderze bota
+2. Zainstaluj wszystkie wymagane pliki za pomocą tej komendy:
+> ./InstallDependences.sh
+Bot powinien wystartować po tym automatycznie, jeśli chcesz odpalić tylko bota użyj:
+> ./Gemini.sh
+<br>Gotowe! Bot został Pomyślnie uruchomiony!
