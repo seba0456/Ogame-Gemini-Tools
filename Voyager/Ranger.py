@@ -8,9 +8,9 @@ logging.basicConfig(filename="log.txt", level=logging.DEBUG)
 cfg = ConfigParser()
 cfg.read('config.ini')
 gal_size = int(cfg.get('misc','gal_size'))+1
-scan_range= int(cfg.get('misc','scan_range'))+1
-minimum_rank= int(cfg.get('misc','minimum_rank'))+1
-
+scan_range= int(cfg.get('misc','scan_range'))
+minimum_rank= int(cfg.get('misc','minimum_rank'))
+results=int(cfg.get('misc','results'))
 # Opening JSON file
 a = 1
 while a == 1:
@@ -52,7 +52,7 @@ for gal in range(1,gal_size):
     sums.sort(key=lambda x: x[1])
     sleep(0.5)
     print("The smallest crowded systems in galaxy ",gal)
-    for i in range(5):
+    for i in range(results):
         print(sums[i][0], sums[i][1])
 
 sleep(3)
