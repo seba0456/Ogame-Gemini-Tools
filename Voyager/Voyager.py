@@ -15,7 +15,7 @@ import json
 from ogame import OGame
 from ogame.constants import destination, coordinates, ships, mission, speed, buildings, status
 from ogame.constants import coordinates, destination
-import json
+import ujson
 from os import path
 
 cfg = ConfigParser()
@@ -27,6 +27,7 @@ PASSWORD = str(cfg.get('login','password'))
 print("Password:",'*' * len(PASSWORD))
 UNI = str(cfg.get('login','universe'))
 print("Universe:",UNI)
+smart_wait = int(cfg.get('misc','smart_wait'))
 ts = time.time()
 timestamp = ts
 date_time = datetime.fromtimestamp(timestamp)
@@ -56,7 +57,7 @@ for x in range(1,gal_size):
                 does_moon_exist=planet.moon
                 player_alliance=planet.alliance
                 with open(filename, mode='w') as f:
-                    json.dump(lst, f)
+                    ujson.dump(lst, f)
                 with open(filename, mode='w') as f:
                     lst.append({'player_name': player_name,
                                 'player_rank':player_rank,
@@ -67,18 +68,26 @@ for x in range(1,gal_size):
                                 'planet_position':planet_position,
                                 'does_moon_exist':does_moon_exist,
                                 })
-                    json.dump(lst, f,indent=2)
+                    ujson.dump(lst, f,indent=2)
         #print("Scanned: ", player_name)
         except:
             sleep(1)
-        sleep(0.25)
+            try:
+                empire = OGame(UNI, USER, PASSWORD)
+            except:
+                print("Unable to log-in!")
+        if smart_wait == 1:
+            planets_in_system = empire.galaxy(coordinates(x, y))
+            if len(planets_in_system) > 4:
+                sleep(planets_in_system*round(random.uniform(0.1, 0.2), 2))
+            else:
+                sleep(round(random.uniform(0.4, 0.6), 2))
+        else:
+            sleep(0.6)
     print('_' * 10)
     print(x, "of ",gal_size-1)
     print("Scanned: ", player_number, " players.")
     print('_' * 10)
-print('_' * 10)
 print('_' * 15)
 print("Scanned: ", player_number, " players.")
 print('_' * 15)
-print('_' * 10)
-
