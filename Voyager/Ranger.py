@@ -8,9 +8,10 @@ logging.basicConfig(filename="log.txt", level=logging.DEBUG)
 cfg = ConfigParser()
 cfg.read('config.ini')
 gal_size = int(cfg.get('misc','gal_size'))+1
-scan_range= int(cfg.get('misc','scan_range'))
-minimum_rank= int(cfg.get('misc','minimum_rank'))
-results=int(cfg.get('misc','results'))
+scan_range= int(cfg.get('ranger','scan_range'))
+minimum_rank= int(cfg.get('ranger','minimum_rank'))
+results=int(cfg.get('ranger','results'))
+maximum_rank=int(cfg.get('ranger','maximum_rank'))
 # Opening JSON file
 a = 1
 while a == 1:
@@ -35,6 +36,8 @@ for gal in range(1,gal_size):
                     if x["player_rank"] is not None:
                         if int(x["player_rank"]) < minimum_rank:
                             planets = planets + 1
+                            if int(x["player_rank"]) < maximum_rank:
+                                planets = maximum_rank - int(x["player_rank"])
                     else:
                         player_rank = None
         #print(y, "has: ",planets)
