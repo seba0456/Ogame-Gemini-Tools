@@ -18,7 +18,7 @@ while i == 0:
         print("voyager scout", "   ", "--- Scan universe and save it to file .JSON")
         print("voyager report", "  ", "--- Reads data from .JSON file and show details about player.")
         print("voyager draw", "    ", "--- Reads data from .JSON file and creates universe map")
-        print("voyager ranger", "    ", "--- Reads data from .JSON file and lists most isolated systems")
+        print("voyager ranger", "  ", "--- Reads data from .JSON file and lists most isolated systems")
         print("voyager abort", "   ", "--- Closes program")
         print('_' * 80)
     else:
