@@ -49,14 +49,16 @@ To góra granica, pracze w tym wypadku z przedziału 1-200 będą unikani, im wy
 
 Ta zmienna definiuje liczbę wyników. 
 
-###Reszta konfiguracji
+## Reszta konfiguracji dla większości programów
 
-Program spyta się nas o nazę pliku. Wygłada ona tak
+Program (oprócz scout) zawsze pyta o plik json
+Plik musi być w tym samym folderze co plik .py!!!
+Wygłada ona tak
 >nazwapliku.json
 
 >gal_size = 0
 
 Ta zmienna odpowiada za rozmiar galaktyki, proszę podać rozmiar uniwersum.
-
+Program (oprócz scout) zawsze pyta o plik json
 Plik musi być w tym samym folderze co plik .py!!!
 
