@@ -23,7 +23,7 @@ while a == 1:
             a = 0
     except:
         print("Invalid file name, please try again...")
-#stats
+#rading JSON
 x=[]
 systems = []
 planets=0
@@ -35,13 +35,16 @@ for gal in range(1,gal_size):
             pos_check=str(pos)
             for x in distros_dict:
                 if str(x["planet_position"]) == pos_check:
+                    #Is player valid
                     if x["player_rank"] is not None:
+                        #Is player not on vacation
                         if str(x["player_status"]) != "['vacation']":
                             if int(x["player_rank"]) < minimum_rank:
                                 planets = planets + 1
                                 if int(x["player_rank"]) < maximum_rank:
                                     planets = planets + (maximum_rank - int(x["player_rank"]))
                                 #print(int(x["player_rank"]), "so planets are: ", planets, "galaxy is: ", gal, " system is: ", y )
+                        #should player on vacation be ignored
                         elif ingore_vacat==0:
                             if int(x["player_rank"]) < minimum_rank:
                                 planets = planets + 1
@@ -50,8 +53,6 @@ for gal in range(1,gal_size):
                                     planets = planets + (maximum_rank - int(x["player_rank"]))
                     else:
                         player_rank = None
-
-        #print(y, "has: ",planets)
         systems.append((y, planets))
         planets=0
 
