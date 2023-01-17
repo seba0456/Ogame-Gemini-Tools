@@ -8,4 +8,5 @@ Bot gemini będzie mieć wiele modułów. Każdy z nich (wraz z instrukcjami zna
 
 
 ## Przyszłość bota
-1. W niedalekiej przyszłości bot otrzyma launcher i nie będzie już więcej potrzeby wybierania plików.
+1. Modół Gemini z racji bycia wypartym przez [TBot](https://github.com/ogame-tbot/TBot) nie będzie już dalej rozwiajny 😞
+2. Modół Voyager nie jest już defacto botem do Ogame, lecz zestawem narzędzi do ułatwienia sobie gry.
