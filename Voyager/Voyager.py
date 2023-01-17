@@ -83,7 +83,7 @@ for x in range(1,gal_size):
             else:
                 sleep(round(random.uniform(0.4, 0.6), 2))
         else:
-            sleep(0.6)
+            sleep(round(random.uniform(0.4, 0.8), 2))
     print('_' * 10)
     print(x, "of ",gal_size-1)
     print("Scanned: ", player_number, " players.")
