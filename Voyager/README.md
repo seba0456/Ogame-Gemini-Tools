@@ -17,7 +17,7 @@ Program odpalamy za pomocą pliku Launch.py, po wpisaniu komendy
 Program wypisze tryby działania
 >voyager scout
 
-Skanuje całe uniwersum i zapisuje rezultat do pliku .json
+Skanuje całe uniwersum i zapisuje rezultat do pliku .json. Skan trwa średnio 8 minut na galaktykę.
 
 >voyager report
 
