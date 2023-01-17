@@ -11,7 +11,7 @@ Bota aktywujemy komendą
 ## Odradzam używanie  tego na głównym koncie
 ### Skan kosztuje 35k deuteru.
 #### Jak używać
-Program odpalamy za pomocą pliku Launch.py, po wpisaniu komendy
+Program odpalamy za pomocą pliku Launch.py. Na teraz dostępne są następujące komendy:
 >help
 
 Program wypisze tryby działania
