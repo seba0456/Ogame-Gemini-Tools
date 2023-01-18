@@ -59,10 +59,10 @@ for gal in range(1,gal_size):
     sums = []
 
     for i in range(scan_range, len(systems) - scan_range):
-        liczba_planet = systems[i][1]
+        number_of_planets = systems[i][1]
         for j in range(i - scan_range, i + scan_range + 1):
-            liczba_planet += systems[j][1]
-        sums.append((systems[i][0], liczba_planet))
+            number_of_planets += systems[j][1]
+        sums.append((systems[i][0], number_of_planets))
 
     sums.sort(key=lambda x: x[1])
     sleep(0.5)
