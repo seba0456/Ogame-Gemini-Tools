@@ -66,7 +66,7 @@ for gal in range(1,gal_size):
 
     sums.sort(key=lambda x: x[1])
     sleep(0.5)
-    print("The smallest crowded systems in galaxy ",gal)
+    print("The least crowded systems in in galaxy ",gal)
     for i in range(results):
         print(sums[i][0], sums[i][1])
 sleep(3)
