@@ -1,6 +1,6 @@
-# Co to Voyager
-Voyager to odłam bota Gemini zajmujący się skanowaniem galaktyki. Pełen skan galaktyki trwa około 30 minut, choć jest to zależne od wielkości galaktyki. Wyniki skanu są zapisywane w pliku .json.
-Przed uruchomieniem bota zainstaluj PIL
+# What is Voyager
+Voyager is a faction of the Gemini bot that deals with galaxy scanning. A full galaxy scan takes about 30 minutes, although this depends on the size of the galaxy. The results of the scan are saved in a .json file.
+Before running the bot, install PIL
 
 ```
 python3 -m pip install --upgrade pip
@@ -10,44 +10,45 @@ python3 -m pip install --upgrade Pillow
 python -m pip install ujson
 ```
 
-Bota aktywujemy komendą 
+The bot is activated with the command 
 > python Launch.py
-## Odradzam używanie  tego na głównym koncie
-### Skan kosztuje 35k deuteru.
-#### Jak używać
-Program odpalamy za pomocą pliku Launch.py. Na teraz dostępne są następujące komendy:
+## I advise against using this on the main account
+### The scan costs 35k deuterium.
+#### How to use
+The program is fired up using the Launch.py file. The following commands are available for now:
 >help
 
-Program wypisze tryby działania
+The programme will list the available commands
+
 >voyager scout
 
-Skanuje całe uniwersum i zapisuje rezultat do pliku .json. Skan trwa średnio od 8 do 9 minut na galaktykę.
+It scans the entire universe and saves the result to a .json file. The scan takes an average of 8 to 9 minutes per galaxy.
 
 >voyager report
 
-Wypisuje informacje na temat wskazanego gracza 
+Lists information on the selected player 
 
 >voyager draw
 
-Tworzy mapę galaktyki, dając każdej galaktyce własny plik. Po wygenerowaniu plików, tworzy mozaikę. Galaktyki w mozaice są oddzielone jednym pikselem. Każda mapa galaktyki ma rozmiar 499x15.
+It creates a galaxy map, giving each galaxy its own file. Once the files have been generated, it creates a mosaic. The galaxies in the mosaic are separated by one pixel. Each galaxy map is 499x15 in size.
 
 >voyager ranger
 
-Wypisuje najmniej zatłoczone układy w każdej galaktyce.
+It lists the least crowded systems in each galaxy.
 
-## Jak skonfigurować program
+## How to configure the programme
 
 >scan_range = 6
 
-Zasięg sprawdzania sąsiednich układów. Np. Sprawdza 6 układów w „lewo” i 6 układów w „prawo”.
+Range of checking neighboring layouts. E.g. Checks 6 systems to the "left" and 6 layouts to the "right".
 
 >minimum_rank = 600
 
-To najniższa ranga gracza, która ma uwzględnić program, graczy o randze 600< nie uwzględni do liczenia planet
+This is the lowest player rank to be considered by the program, players with a rank of 600< will not be included in the planet counting.
 
 >maximum_rank = 200
 
-To góra granica, pracze w tym wypadku z przedziału 1-200 będą unikani, im wyższa ranga tym bardziej „gorąca” planeta. Jeśli ustawisz na 0, program nie będzie unikał wysokiej rangi.
+This is the upper limit, launderers in this case between 1-200 will be avoided, the higher the rank the more 'hot' the planet. If you set it to 0, the program will not avoid high rank.
 
 >results = 5
 
