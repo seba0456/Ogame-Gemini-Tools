@@ -18,7 +18,7 @@ The bot is activated with the command
 The program is fired up using the Launch.py file. The following commands are available for now:
 >help
 
-The programme will list the available commands
+The program will list the available commands
 
 >voyager scout
 
@@ -36,7 +36,7 @@ It creates a galaxy map, giving each galaxy its own file. Once the files have be
 
 It lists the least crowded systems in each galaxy.
 
-## How to configure the programme
+## How to configure the program
 
 >scan_range = 6
 
@@ -52,18 +52,15 @@ This is the upper limit, launderers in this case between 1-200 will be avoided, 
 
 >results = 5
 
-Ta zmienna definiuje liczbę wyników. 
+This variable defines the number of results.
 
-## Reszta konfiguracji dla większości programów
+## The rest of the configuration for most modules
 
-Program (oprócz scout) zawsze pyta o plik json
-Plik musi być w tym samym folderze co plik .py!!!
-Wygłada ona tak
->nazwapliku.json
+The program (except scout) always asks for a json file.
+The file must be in the same folder as the .py file!!!
+The file looks like this
+>universe_date.json
 
 >gal_size = 0
 
-Ta zmienna odpowiada za rozmiar galaktyki, proszę podać rozmiar uniwersum.
-Program (oprócz scout) zawsze pyta o plik json
-Plik musi być w tym samym folderze co plik .py!!!
-
+This variable is responsible for the size of the galaxy, please specify the size of the universe.
