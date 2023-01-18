@@ -1,2 +1,2 @@
-@echo "Uruchamiam program"
+@echo "Launching program"
 python Launch.py
