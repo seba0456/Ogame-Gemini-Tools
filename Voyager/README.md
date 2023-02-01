@@ -7,7 +7,7 @@ python3 -m pip install --upgrade pip
 
 python3 -m pip install --upgrade Pillow
 
-python -m pip install ujson
+python3 -m pip install ujson
 ```
 
 The bot is activated with the command 
