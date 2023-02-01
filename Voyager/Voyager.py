@@ -32,7 +32,7 @@ smart_wait = int(cfg.get('misc','smart_wait'))
 ts = time.time()
 timestamp = ts
 date_time = datetime.fromtimestamp(timestamp)
-archive = str(UNI) + "_" + date_time.strftime("%d_%m_%Y_%H_%M") +".json"
+archive = str(UNI) + "_" + lang + "_" + date_time.strftime("%d_%m_%Y_%H_%M") +".json"
 with open(archive, 'w') as f:
     print("The json file is created:", archive)
 filename = archive
