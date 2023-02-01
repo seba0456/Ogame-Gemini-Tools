@@ -8,6 +8,10 @@ python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade Pillow
 
 python3 -m pip install ujson
+
+pip install ogame==8.1.0.21
+
+pip install tqdm
 ```
 
 The bot is activated with the command 
