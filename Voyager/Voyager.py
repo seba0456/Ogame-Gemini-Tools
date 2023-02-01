@@ -22,6 +22,7 @@ cfg = ConfigParser()
 cfg.read('config.ini')
 gal_size = int(cfg.get('misc','gal_size'))+1
 USER = str(cfg.get('login','login'))
+lang = str(cfg.get('login','lang'))
 print("Login:",USER)
 PASSWORD = str(cfg.get('login','password'))
 print("Password:",'*' * len(PASSWORD))
@@ -37,7 +38,7 @@ with open(archive, 'w') as f:
 filename = archive
 lst = []
 
-empire = OGame(UNI, USER, PASSWORD)
+empire = OGame(UNI, USER, PASSWORD, language=lang)
 
 print("Gathering data, please wait...")
 print("0 of ", gal_size-1)
