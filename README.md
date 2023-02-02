@@ -6,7 +6,7 @@ Bot Gemini będzie mieć wiele modułów. Każdy z nich (wraz z instrukcjami) zn
 2. Voyager zajmuje się zdobywaniem informacji o statusie graczy oraz ich planetach oraz dawaniem wskazówek o najmniej tłocznych miejscach w uniwersum.
 
 ## Przyszłość bota
-1. Moduł Gemini, z racji bycia wypartym przez [TBot](https://github.com/ogame-tbot/TBot), nie będzie już dalej rozwijany 😞
+1. Moduł Gemini, z racji bycia wypartym przez inne rozwiązanie, nie będzie już dalej rozwijany 😞
 2. Moduł Voyager nie jest już defacto botem do Ogame, lecz zestawem narzędzi do ułatwienia sobie gry.
 
 ## Co program potrafi?
