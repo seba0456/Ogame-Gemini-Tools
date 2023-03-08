@@ -26,3 +26,9 @@ At first glance, the map seems to be unreadable, but it has dimensions (15+1) * 
 
 #### Potential colony locations.
 The program lists the least crowded systems for each galaxy, avoiding high-ranked players and not taking into account low-ranked players.
+
+## How to install
+Run this command in your terminal.
+```
+pip install -r requirements.txt
+```
