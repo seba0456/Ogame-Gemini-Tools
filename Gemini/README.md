@@ -21,12 +21,7 @@ Bot wysyła wskazaną liczbę ekspedycji.
 2. Zainstaluj program Python 3.9
 3. Uruchom CMD
 4. Wpisz w CMD 
-> pip install ogame==8.1.0.21
-
-> pip install tqdm
-5. Wciśnij Enter i zaczekaj na ukończenie pobierania pakietu
-6. Pobierz plik .py z tej strony
-7. Przenieś plik do C:/Users/TwojaNazwaUżytkownika
+5. Przenieś plik do C:/Users/TwojaNazwaUżytkownika
 #### Uruchamianie bota
 1. Uruchom CMD
 2. Wpisz 
