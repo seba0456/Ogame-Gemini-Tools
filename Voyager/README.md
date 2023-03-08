@@ -1,18 +1,5 @@
 # What is Voyager
 Voyager is a faction of the Gemini bot that deals with galaxy scanning. A full galaxy scan takes about 30 minutes, although this depends on the size of the galaxy. The results of the scan are saved in a .json file.
-Before running the bot, install PIL
-
-```
-python3 -m pip install --upgrade pip
-
-python3 -m pip install --upgrade Pillow
-
-python3 -m pip install ujson
-
-pip install ogame==8.1.0.21
-
-pip install tqdm
-```
 
 The bot is activated with the command 
 > python Launch.py
