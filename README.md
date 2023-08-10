@@ -6,9 +6,7 @@ The Gemini bot will have multiple modules. Each one of them (along with instruct
 2. Voyager is responsible for gathering information about the status of players and their planets, and giving tips about the least crowded places in the universe.
 
 ## The future of the bot.
-1. Due to being replaced by another solution, the Gemini module will no longer be further developed. 😞
-2. The Voyager module is no longer a bot for Ogame, but rather a set of tools to make the game easier for oneself.
-
+Project abandoned. Feel free to modyfy it. 
 ## What can the program do?
 ### Gemini
 Currently, Gemini is capable of sending expeditions. The free slots of expeditions and the fleet composition must be selected by us. In the latest version, I added the FS module, but I haven't tested it in practice, it should work 😂
