@@ -1,41 +1,50 @@
-# Aktualizacja
-Od teraz domyślnym branchem jest gemini. Jedynym wspieranym (przezemnie branchem jest gemini).
-## Ogame-Expedition Bot koniguracja bota
-Własna modyfikacja już istniejącego kodu.
-Bot wysyła wskazaną liczbę ekspedycji.
-<br>Bota konfigurujemy w pliku config.ini!
-<br>W liniach 2-4 wpisujemy dane logowania.
-<br>W lini 7 wpisujemy ID swojej planety/moona z której będziemy wysyłać ekspedycję.
-<br>W sekcji fleet wpisujemy liczbę statków, oznaczone są one w komentarzach .
-<br>W polu 8 wpisujemy nasz układ.
-<br>W polu 9 wpisujemy zasięg w, kótrych mamy zamiar operować zasięgo to: (nasz układ - target_system range) i  (nasz układ + target_system range).
-<br>Aby zdobyć ID musimy:
-1. Wejść do Ogame.
-1. Klinkąć na interesującą nas planetę.
-1. Wejść w zakładkę "podgląd".
-1. Wejść w pasek adresu storny.     
-> Przykładowo https://s180-pl.ogame.gameforge.com/game/index.php?page=ingame&component=overview&cp=33640732
-5. ID znajduje się po cp=, w tym przypadku to 33640732.
-### Instalacja oraz przygotowywanie systemu do używania bota w systemie Windows 10 lub nowszym
-1. Uruchom Microsoft Store oraz wyszukaj frazę: Python 3.9, którego wydawcą jest Python Software Foundation 
-2. Zainstaluj program Python 3.9
-3. Uruchom CMD
-4. Wpisz w CMD 
-5. Przenieś plik do C:/Users/TwojaNazwaUżytkownika
-#### Uruchamianie bota
-1. Uruchom CMD
-2. Wpisz 
-> python3 simplebot.py i naciśnij enter
-#### Alternatywnie uruchamianie na windowsie
-1. Uruchom Launch.bat
-I to tyle żadnego przenoszenia plików z botem, nic tylko jeden plik do odpalenia bota ^^
+Update
+======
 
-### Instalacja oraz przygotowywanie systemu do używania bota w systemie Windows 10 lub nowszym
-1. Uruchom terminal w folderze bota
-2. Zainstaluj wszystkie wymagane pliki za pomocą tej komendy:
+From now on, the default branch is 'gemini'. The only supported branch (by me) is 'gemini'.
+
+Ogame-Expedition Bot - Bot Configuration
+----------------------------------------
+
+Custom modification of existing code. The bot sends the specified number of expeditions. <br>Configure the bot in the config.ini file! <br>In lines 2-4, enter your login details. <br>In line 7, enter the ID of your planet/moon from which you'll be sending the expedition. <br>In the 'fleet' section, enter the number of ships, they are labeled in the comments. <br>In field 8, enter your system. <br>In field 9, enter the range within which you intend to operate; it should be (your system - target_system range) and (your system + target_system range). <br>To get the ID:
+
+1.  Go to Ogame.
+2.  Click on the planet you're interested in.
+3.  Go to the "overview" tab.
+4.  Check the address bar of the page.
+
+> For example, <https://s180-pl.ogame.gameforge.com/game/index.php?page=ingame&component=overview&cp=33640732>
+
+1.  The ID is after cp=, in this case, it's 33640732.
+
+### Installation and preparation of the system for using the bot on Windows 10 or newer
+
+1.  Launch Microsoft Store and search for the phrase: Python 3.9, published by Python Software Foundation
+2.  Install Python 3.9
+3.  Open CMD
+4.  Type in CMD
+5.  Move the file to C:/Users/YourUsername
+
+#### Running the bot
+
+1.  Open CMD
+2.  Type
+
+> python3 simplebot.py and press enter
+
+#### Alternatively, running on Windows
+
+1.  Run Launch.bat That's all, no file moving for the bot, just one file to run the bot ^^
+
+### Installation and preparation of the system for using the bot on Windows 10 or newer
+
+1.  Launch the terminal in the bot folder
+2.  Install all required files using this command:
+
 > ./InstallDependences.sh
 
-Bot powinien wystartować po tym automatycznie, jeśli chcesz odpalić tylko bota użyj:
+The bot should start automatically after this, if you want to run only the bot, use:
+
 > ./Gemini.sh
 
-<br>Gotowe! Bot został Pomyślnie uruchomiony!
+<br>Done! The bot has been successfully launched!
